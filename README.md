@@ -1,2 +1,4 @@
 # CJ_formationHTML_202012
-formationHTML Decembre
+Formation HTML/CSS/JavaScript Décembre 2020
+
+## Début du projet
