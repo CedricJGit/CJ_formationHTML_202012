@@ -9,22 +9,25 @@
 </head>
 
 <body>
+    <div id="jsload" style="background-color: tomato; color: white; text-align: center; ">JS non chargé</div>
+
     <div id="main">
         <div id="editor">
             <div id="form">
                 <form name="editor-form">
                     <h1>Les notes de l'espace !</h1>
+                    <div style="width: 30%; margin-left: 35%; text-align: left;">
+                        <input type="text" name="title" id="editor-title" placeholder="Titre" /><br />
+                        <div class="enligne">
+                            <h4>Date</h4><input type="date" name="date" id="editor-date" />
+                        </div>
+                        <div class="enligne">
+                            <h4>Heure</h4><input type="time" name="time" id="editor-time" />
+                        </div>
 
-                    <input type="text" name="title" id="editor-title" placeholder="Titre" /><br />
-                    <div class="enligne">
-                        <h4>Date</h4><input type="date" name="date" id="editor-date" />
+                        <!-- <h2>Description :</h2> -->
+                        <textarea name="description" id="editor-descr" placeholder="Description"></textarea>
                     </div>
-                    <div class="enligne">
-                        <h4>Heure</h4><input type="time" name="time" id="editor-time" />
-                    </div>
-
-                    <h2>Description :</h2>
-                    <textarea name="description" id="editor-descr" placeholder="Description"></textarea>
                 <div>
                     <input type="reset" value="Initialiser">
                     <input type="submit" value="Valider">
