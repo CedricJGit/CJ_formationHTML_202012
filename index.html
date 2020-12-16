@@ -1,54 +1,73 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Post-it&copy;</title>    <!--Copyright-->
-    <link rel="stylesheet" href="css/style.css"/>
+    <title>Post-it&copy;</title>
+    <!--Copyright-->
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
     <div id="main">
-    <div id="editor">
-        <div id="form">
-            <h1>Les notes de l'espace !</h1>
-            Sacré note ! <br/>
-            Date : 15/12/2020 Heure : 15:06
-            <h2>Description :</h2>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
-        </div>
-    </div>
-    <hr/>   <!--Ligne horizontale-->
-    <div id="list">
-        <div class="postit">            
-            <div class="postit-titre">Note n°1 !</div>
-            <br>
-            Date et heure : 
-            <span class="datetime">15/12/2020</span>
-            <span class="datetime">15:06</span>
-            
-            <h2>Description :</h2>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
-        </div>
-        <div class="postit">          
-            <div class="postit-titre">Note n°2 !</div>
-            <br>
-            Date et heure : 
-            <span class="datetime">15/12/2020</span> 
-            <span class="datetime">15:06</span>
+        <div id="editor">
+            <div id="form">
+                <form name="editor-form">
+                    <h1>Les notes de l'espace !</h1>
 
-            <h2>Description :</h2>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
-        </div>
-        <div class="postit">          
-            <div class="postit-titre">Note n°3 !</div>
-            <br>
-            Date et heure : 
-            <span class="datetime">15/12/2020</span> 
-            <span class="datetime">15:06</span>
+                    <input type="text" name="title" id="editor-title" placeholder="Titre" /><br />
+                    <div class="enligne">
+                        <h4>Date</h4><input type="date" name="date" id="editor-date" />
+                    </div>
+                    <div class="enligne">
+                        <h4>Heure</h4><input type="time" name="time" id="editor-time" />
+                    </div>
 
-            <h2>Description :</h2>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
+                    <h2>Description :</h2>
+                    <textarea name="description" id="editor-descr" placeholder="Description"></textarea>
+                <div>
+                    <input type="reset" value="Initialiser">
+                    <input type="submit" value="Valider">
+                </div>
+            </form>
+        </div>
+    
+        <hr/>   <!--Ligne horizontale-->
+
+        <div id="list">
+            <div class="postit">            
+                <div class="postit-titre">Note n°1 !</div>
+                <br>
+                Date et heure : 
+                <span class="datetime">15/12/2020</span>
+                <span class="datetime">15:06</span>
+                
+                <h2>Description :</h2>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
+            </div>
+
+            <div class="postit">          
+                <div class="postit-titre">Note n°2 !</div>
+                <br>
+                Date et heure : 
+                <span class="datetime">15/12/2020</span> 
+                <span class="datetime">15:06</span>
+
+                <h2>Description :</h2>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
+            </div>
+
+            <div class="postit">          
+                <div class="postit-titre">Note n°3 !</div>
+                <br>
+                Date et heure : 
+                <span class="datetime">15/12/2020</span> 
+                <span class="datetime">15:06</span>
+
+                <h2>Description :</h2>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
+            </div>
         </div>
     </div>
 </body>
