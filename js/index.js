@@ -10,7 +10,8 @@ window.addEventListener('load', function(evt) {
         
         mesPostIt.forEach(function(postit) {
             console.log(postit);
-            createPostit(postit.titre, postit.datetime.substring(0,10), postit.datetime.substring(12), postit.description);
+            //createPostit(postit.titre, postit.datetime.substring(0,10), postit.datetime.substring(11), postit.description);
+            createPostitByObject(postit);
         });
     });
 });
@@ -63,6 +64,37 @@ function createPostit(_sTitre, _sDate, sHeure, _sComment) {
     let close = postit.querySelector('.suppr-postit img');
     close.addEventListener('click', supprPostit);
 };
+
+/**
+ * Nouveau post-it avec ajout dans la balise div#list par le biais d'un objet postit complet
+ * @param {object} postit  objet postit
+ */
+function createPostitByObject(postitInput) {
+    let postit = document.createElement('div');
+    
+    // Créationde l'id de balise en liens avec l'id du postit dans le rest pour faciliter la suppression
+    postit.id = 'postit-'+postitInput.id;
+
+    postit.classList.add('postit');  
+
+    postit.innerHTML = 
+        '<div class="postit-titre">'+postitInput.titre+'</div>\
+        <br>\
+        Date et heure : \
+        <span class="datetime">'+postitInput.datetime.substring(0,10)+'</span>\
+        <span class="datetime">'+postitInput.datetime.substring(11)+'</span>\
+        <h2>Mode d emploi :</h2>'+postitInput.description+'\
+        <div class="suppr-postit" style="float: right;">\
+        <img src="img/suppr.png"/>\
+        </div>';
+
+    let liste = document.querySelector('#list');
+    liste.append(postit);
+
+    let close = postit.querySelector('.suppr-postit img');
+    close.addEventListener('click', supprPostit);
+};
+
 
 // Suppression du post-it
 function supprPostit(evt) {
