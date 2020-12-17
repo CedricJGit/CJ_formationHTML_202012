@@ -16,6 +16,12 @@ h1{
     text-align: center;
 }
 
+.suppr-postit img {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
 #form{
     border: 1px solid steelblue; 
     border-radius: 7px; /*Angles arrondis*/
@@ -27,6 +33,10 @@ h1{
     /*box-shadow: 30px 30px 45px grey;*/
     
     padding: 10px;
+}
+
+#list>*{
+    vertical-align: top;
 }
 
 #editor{

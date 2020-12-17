@@ -19,60 +19,82 @@
                     <div style="width: 30%; margin-left: 35%; text-align: left;">
                         <input type="text" name="title" id="editor-title" placeholder="Titre" /><br />
                         <div class="enligne">
-                            <h4>Date</h4><input type="date" name="date" id="editor-date" />
+                            <h4>Date</h4><input type="date" name="date" id="editor-date" value="2020-12-17"/>
                         </div>
                         <div class="enligne">
-                            <h4>Heure</h4><input type="time" name="time" id="editor-time" />
+                            <h4>Heure</h4><input type="time" name="time" id="editor-time" value="10:30"/>
                         </div>
 
                         <!-- <h2>Description :</h2> -->
                         <textarea name="description" id="editor-descr" placeholder="Description"></textarea>
                     </div>
-                <div>
-                    <input type="reset" value="Initialiser">
-                    <input type="submit" value="Valider">
-                </div>
-            </form>
-        </div>
+                    <div>
+                        <input type="reset" value="Initialiser" id="editor-init">
+                        <input type="submit" value="Valider">
+                    </div>
+                </form>
+            </div>
     
-        <hr/>   <!--Ligne horizontale-->
+            <hr/>   <!--Ligne horizontale-->
 
-        <div id="list">
-            <div class="postit">            
-                <div class="postit-titre">Note n°1 !</div>
-                <br>
-                Date et heure : 
-                <span class="datetime">15/12/2020</span>
-                <span class="datetime">15:06</span>
-                
-                <h2>Description :</h2>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
-            </div>
+            <div id="list">
+                <div class="postit">            
+                    <div class="postit-titre">Allumage</div>
+                    <br>
+                    Date et heure : 
+                    <span class="datetime">15/12/2020</span>
+                    <span class="datetime">15:06</span>
+                    
+                    <h2>Mode d'emploi :</h2>
+                    1. Fasten your seatbelt<br>
+                    2. Push the big button<br>
 
-            <div class="postit">          
-                <div class="postit-titre">Note n°2 !</div>
-                <br>
-                Date et heure : 
-                <span class="datetime">15/12/2020</span> 
-                <span class="datetime">15:06</span>
+                    <div class="suppr-postit" style="float: right;">
+                        <img src="img/suppr.png"/>
+                         <!--<input type="button" value="Supprimer" class="suppr-postit">-->
+                    </div>
+                </div>
 
-                <h2>Description :</h2>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
-            </div>
+                <div class="postit">          
+                    <div class="postit-titre">Décollage</div>
+                    <br>
+                    Date et heure : 
+                    <span class="datetime">15/12/2020</span> 
+                    <span class="datetime">15:06</span>
 
-            <div class="postit">          
-                <div class="postit-titre">Note n°3 !</div>
-                <br>
-                Date et heure : 
-                <span class="datetime">15/12/2020</span> 
-                <span class="datetime">15:06</span>
+                    <h2>Description :</h2>
+                    1. Fermer les yeux<br>
+                    2. Serrer les fesses<br>
+                    Option. Prévoir un sac à vomito<br>
 
-                <h2>Description :</h2>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ducimus reprehenderit, deleniti sed inventore cupiditate dolores sequi aspernatur doloremque veritatis et adipisci, molestiae laborum quo fugiat nisi amet dolorem cumque est?
+                    <div class="suppr-postit" style="float: right;">
+                        <img src="img/suppr.png"/>
+                    </div>
+                </div>
+
+                <div class="postit">          
+                    <div class="postit-titre">Arrimage</div>
+                    <br>
+                    Date et heure : 
+                    <span class="datetime">15/12/2020</span> 
+                    <span class="datetime">15:06</span>
+
+                    <h2>Description :</h2>
+                    1. Bien viser<br>
+                    2. Verrouiller<br>
+                    3. Ouvrir le sas
+
+                    <div class="suppr-postit" style="float: right;">
+                        <img src="img/suppr.png"/>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- <script src="node_modules/require/"></script> -->
+    <!--<script src="node_modules/moment/dist/moment.js"></script> -->
+    <script src="js/rest.js"></script>
     <script src="js/index.js"></script>
 </body>
 </html>

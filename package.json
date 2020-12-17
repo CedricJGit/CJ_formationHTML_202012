@@ -4,7 +4,8 @@
   "description": "Formation HTML/CSS/JavaScript Décembre 2020",
   "main": "index.js",
   "scripts": {
-    "test": "lite-server"
+    "test": "lite-server",
+    "start": "json-server -p 3131 db/db.json"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   },
   "homepage": "https://github.com/CedricJGit/CJ_formationHTML_202012#readme",
   "dependencies": {
-    "lite-server": "^2.6.1"
+    "lite-server": "^2.6.1",
+    "moment": "^2.29.1",
+    "require": "^2.4.20"
   }
 }
