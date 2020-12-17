@@ -3,6 +3,16 @@ window.addEventListener('load', function(evt) {
     initialisationJS('Thomas Pesquet');
 
     document.querySelector('form').addEventListener('submit', formSubmited);
+
+    // Chargement initial des post-it
+    (new Crud(BASE_URL)).recup('/postit', function(mesPostIt){
+        console.log('J\'ai fini de recevoir tous mes post-it, voici la liste :', mesPostIt);
+        
+        mesPostIt.forEach(function(postit) {
+            console.log(postit);
+            createPostit(postit.titre, postit.datetime.substring(0,10), postit.datetime.substring(12), postit.description);
+        });
+    });
 });
 
 function initialisationJS(_sPrenom) {
