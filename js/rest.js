@@ -78,7 +78,7 @@ let Crud = function (baseurl) {
      * @param {uri} sRessourceUrl chemin du post
      * @param {object} sRessource data à envoyer
      */
-    function _put(sRessourceUrl, sRessource){
+    function _put(sRessourceUrl, sRessource, callback){
         // instanciation de xhr
         let xhr=new XMLHttpRequest();
         
@@ -90,9 +90,10 @@ let Crud = function (baseurl) {
         xhr.setRequestHeader('Accept','application/json');          // ... de ce qui est attendu en retour
 
         xhr.onreadystatechange = function(evt){
-            if(xhr.readyState < 4){return;}
+            if (xhr.readyState < 4 || xhr.status !== 200) { return; }
             
-            console.log(JSON.parse(xhr.response));
+            //console.log(JSON.parse(xhr.response));
+            callback(JSON.parse(xhr.response));
         };
 
         // Envoi de la requête avec transformation en JSON du contenu objet
@@ -104,6 +105,19 @@ let Crud = function (baseurl) {
     this.creer=_post;
     this.maj=_put;
     this.suppr=_remove;
+
+    // Gestion d'envoi au serveur soit PUT (si Id présent), soit POST (si pas d'Id dans la ressource)
+    this.envoiRessource = function(ressourceUrl, ressource, callback) 
+    {
+        if (undefined !== ressource.id) 
+        {
+            _put(ressourceUrl+'/'+ressource.id, ressource, callback);
+        } 
+        else 
+        {
+            _post(ressourceUrl, ressource, callback);
+        }
+    };
 };
 
 //let crud = new Crud(BASE_URL);

@@ -36,12 +36,27 @@ function formSubmited(evt) {
                     datetime:myForm["date"].value+"T"+myForm["time"].value,
                     description:myForm["description"].value
                 };
+
+    if (myForm['id'].value !== '') {
+        postit.id = myForm['id'].value;
+    };
+
     console.log(postit);
 
     // Appel rest pour l'ajout dans la liste et recup de l'id
-    (new Crud(BASE_URL)).creer('/postit', postit, function(objSaved) {
+    (new Crud(BASE_URL)).envoiRessource('/postit', postit, function(objSaved) {
+        if (undefined !== postit.id) 
+        {
+            // Supprime préalablement l'ancien postit de même id
+            document.querySelector('#postit-'+postit.id).remove();
+        }
         createPostitByObject(objSaved);
     });
+
+    // Appel rest pour l'ajout dans la liste et recup de l'id
+    //(new Crud(BASE_URL)).creer('/postit', postit, function(objSaved) {
+    //   createPostitByObject(objSaved);
+    //});
     
     // createPostit(myForm['title'].value, evt.target[1].value, evt.target[2].value, evt.target[3].value)
 };
@@ -137,8 +152,8 @@ function majSelectedPostit(evt){
     );
     
     document.forms["editor-form"]["id"].value = domPostitId.id.substring(7);
-    document.forms["editor-form"]["title"].value = postit.querySelector('.postit-titre').innerText;
-    document.forms["editor-form"]["date"].value = postit.querySelector('.postit-date').innerText;
-    document.forms["editor-form"]["time"].value = postit.querySelector('.postit-heure').innerText;
-    document.forms["editor-form"]["descr"].value = postit.querySelector('.postit-descr').innerText;
+    document.forms["editor-form"]["title"].value = domPostitId.querySelector('.postit-titre').innerText;
+    document.forms["editor-form"]["date"].value = domPostitId.querySelector('.postit-date').innerText;
+    document.forms["editor-form"]["time"].value = domPostitId.querySelector('.postit-heure').innerText;
+    document.forms["editor-form"]["description"].value = domPostitId.querySelector('.postit-descr').innerText;
 };

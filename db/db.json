@@ -1,24 +1,5 @@
 {
-  "postit": [
-    {
-      "titre": "tototo",
-      "datetime": "2020-12-18T09:35",
-      "description": "la bretagne ",
-      "id": 5
-    },
-    {
-      "titre": "titit",
-      "datetime": "2020-12-18T09:35",
-      "description": "rert",
-      "id": 6
-    },
-    {
-      "titre": "tatat",
-      "datetime": "2020-12-18T09:35",
-      "description": "rert",
-      "id": 7
-    }
-  ],
+  "postit": [],
   "proprietaire": {
     "nom": "Doe",
     "prénom": "John",
