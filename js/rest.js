@@ -3,12 +3,12 @@ var BASE_URL = 'http://localhost:3131';
 // Objet permettant les appels http
 let Crud = function (baseurl) {
 
-    function get(_sRessourceUrl, callback) {
+    function _get(sRessourceUrl, callback) {
         // instanciation de xhr
         let xhr=new XMLHttpRequest();
         
         // Ouverture de la connexion
-        xhr.open('GET', baseurl+_sRessourceUrl);
+        xhr.open('GET', baseurl+sRessourceUrl);
         
         // Tâche à effectuer à chaque changement de readystate (passage d'une étape de réception)
         // 1 => Open, 2=> Send, 3=> En cours de réception, 4=> Fin de réception
@@ -16,7 +16,6 @@ let Crud = function (baseurl) {
             if(evt.currentTarget.readyState < XMLHttpRequest.DONE){return;}
             var objt = JSON.parse(evt.currentTarget.response);
             console.log(objt);
-
             
             callback(objt);
         };
@@ -27,44 +26,46 @@ let Crud = function (baseurl) {
 
     /**
      * Création d'une ressource sur _sRessourceUrl
-     * @param {uri} _sRessourceUrl chemin du post
-     * @param {object} _sRessource data à envoyer
+     * @param {uri} sRessourceUrl chemin du post
+     * @param {object} sRessource data à envoyer
+     * @param {function} callback Fonction de callback avec injection de retour
      */
-    function post(_sRessourceUrl, _sRessource){
-        // instanciation de xhr
+    function _post(sRessourceUrl, sRessource, callback){
+        // Instanciation de xhr
         let xhr=new XMLHttpRequest();
         
         // Ouverture de la connexion
-        xhr.open('POST', baseurl+_sRessourceUrl);
+        xhr.open('POST', baseurl + sRessourceUrl);
         
         // Spécification... 
         xhr.setRequestHeader('Content-Type','application/json');    // ...du type de contenu
         xhr.setRequestHeader('Accept','application/json');          // ... de ce qui est attendu en retour
 
         xhr.onreadystatechange = function(evt){
-            if(xhr.readyState < 4){return;}
-            
+            if (xhr.readyState < 4 || xhr.status != 201) { return; }
             console.log(JSON.parse(xhr.response));
+            callback(JSON.parse(xhr.response));
         };
 
         // Envoi de la requête avec transformation en JSON du contenu objet
-        xhr.send(JSON.stringify(_sRessource)); 
+        xhr.send(JSON.stringify(sRessource)); 
     }
 
     /**
      * Suppression d'une ressource sur _sRessourceUrl 
-     * @param {uri} _sRessourceUrl 
+     * @param {uri} sRessourceUrl 
      */
-    function remove(_sRessourceUrl){
+    function _remove(sRessourceUrl, callback){
         // instanciation de xhr
         let xhr=new XMLHttpRequest();
         
         // Ouverture de la connexion
-        xhr.open('DELETE', baseurl+_sRessourceUrl);
+        xhr.open('DELETE', baseurl+sRessourceUrl);
 
-        xhr.onreadystatechange = function(evt){
-            if(xhr.readyState < 4){return;}
-            console.log(JSON.parse(xhr.response));
+        xhr.onreadystatechange = function(evt) {
+            if(xhr.readyState < 4 || xhr.status != 200) { return; }
+            //console.log(JSON.parse(xhr.response));
+            callback();
         };
         
         // Envoi de la requête
@@ -74,15 +75,15 @@ let Crud = function (baseurl) {
 
     /**
      * Mise à jour d'une ressource sur _sRessourceUrl
-     * @param {uri} _sRessourceUrl chemin du post
-     * @param {object} _sRessource data à envoyer
+     * @param {uri} sRessourceUrl chemin du post
+     * @param {object} sRessource data à envoyer
      */
-    function put(_sRessourceUrl, _sRessource){
+    function _put(sRessourceUrl, sRessource){
         // instanciation de xhr
         let xhr=new XMLHttpRequest();
         
         // Ouverture de la connexion
-        xhr.open('PUT', baseurl+_sRessourceUrl);
+        xhr.open('PUT', baseurl+sRessourceUrl);
         
         // Spécification... 
         xhr.setRequestHeader('Content-Type','application/json');    // ...du type de contenu
@@ -95,14 +96,14 @@ let Crud = function (baseurl) {
         };
 
         // Envoi de la requête avec transformation en JSON du contenu objet
-        xhr.send(JSON.stringify(_sRessource)); 
+        xhr.send(JSON.stringify(sRessource)); 
     }
 
     // pour les accès extérieurs de l'instance de ces fonctions
-    this.recup=get;
-    this.creer=post;
-    this.maj=put;
-    this.suppr=remove;
+    this.recup=_get;
+    this.creer=_post;
+    this.maj=_put;
+    this.suppr=_remove;
 };
 
 //let crud = new Crud(BASE_URL);

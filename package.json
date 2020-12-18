@@ -4,8 +4,9 @@
   "description": "Formation HTML/CSS/JavaScript Décembre 2020",
   "main": "index.js",
   "scripts": {
-    "test": "lite-server",
-    "start": "json-server -p 3131 db/db.json"
+    "lite": "lite-server",
+    "json": "json-server -p 3131 db/db.json",
+    "start": "npm run lite | npm run json"
   },
   "repository": {
     "type": "git",
